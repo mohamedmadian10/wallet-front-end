@@ -1,0 +1,60 @@
+<form #transferForm="ngForm" (ngSubmit)="onTransfer(transferForm)">
+  <div class="form-group">
+    <input
+      type="tel"
+      name="from"
+      class="form-control"
+      placeholder="Enter your mobile number"
+      ngModel
+      required
+      minlength="11"
+      maxlength="11"
+      #from="ngModel"
+    />
+    <small id="helpId" class="text-muted" *ngIf="from.touched && from.invalid"
+      >please enter correct Number!</small
+    >
+  </div>
+  <div class="form-group">
+    <input
+      type="tel"
+      name="to"
+      class="form-control"
+      placeholder="enter Mobile Number you want transfer to"
+      ngModel
+      required
+      #to="ngModel"
+      minlength="11"
+      maxlength="11"
+    />
+    <small id="helpId" class="text-muted" *ngIf="to.touched && to.invalid"
+      >please enter correct mobile number!</small
+    >
+  </div>
+  <div class="form-group">
+    <input
+      type="number"
+      name="balance"
+      class="form-control"
+      placeholder="balance"
+      ngModel
+      required
+      #balance="ngModel"
+    />
+    <small
+      id="helpId"
+      class="text-muted"
+      *ngIf="balance.touched && balance.invalid"
+      >please enter a valid value!</small
+    >
+  </div>
+  <div class="form-group">
+    <button
+      [disabled]="!transferForm.valid"
+      class="btn btn-primary text-center"
+    >
+      Sign up
+    </button>
+  </div>
+</form>
+<p >your balance:{{ currentBalance }}</p>
