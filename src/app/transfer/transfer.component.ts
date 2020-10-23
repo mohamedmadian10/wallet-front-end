@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 })
 export class TransferComponent implements OnInit {
   currentBalance;
+  successMessage;
+  error;
   constructor(private transferService: TransferService) {}
 
   ngOnInit(): void {}
@@ -17,9 +19,16 @@ export class TransferComponent implements OnInit {
   onTransfer(form: NgForm) {
     this.transferService
       .createTransfer(form.value.from, form.value.to, form.value.balance)
-      .subscribe((result) => {
-        console.log(result)
-        this.currentBalance = result["from"].balance
-      });
+      .subscribe(
+        (result) => {
+          console.log(result['result'].from.balance);
+          this.successMessage = result['message'];
+          this.currentBalance = result['result'].from.balance;
+        },
+        (err) => {
+          console.log(err.error.message);
+          this.error = err.error.message;
+        }
+      );
   }
 }
