@@ -27,14 +27,14 @@ export class AuthService {
   }
   //regiser user
   registerUser(user: User) {
-    return this.http.post(`http://localhost:3000/api/user/register`, user);
+    return this.http.post(`http://localhost:8080/api/user/register`, user);
   }
   //login user
   login(mobile: number, password: string) {
     const authData: User = { mobile: mobile, password: password };
     this.http
       .post<{ token: string; expiresIn: number }>(
-        'http://localhost:3000/api/user/login',
+        'http://localhost:8080/api/user/login',
         authData
       )
       .subscribe((response) => {

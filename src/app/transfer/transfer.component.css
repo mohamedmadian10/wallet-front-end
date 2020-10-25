@@ -2,7 +2,7 @@ form {
   width: 400px;
   margin: auto;
 }
-p {
+p,h1 {
   margin: auto;
   text-align: center;
 }

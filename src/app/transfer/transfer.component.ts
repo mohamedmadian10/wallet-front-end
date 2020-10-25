@@ -21,9 +21,9 @@ export class TransferComponent implements OnInit {
       .createTransfer(form.value.from, form.value.to, form.value.balance)
       .subscribe(
         (result) => {
-          console.log(result['result'].from.balance);
+          console.log(result);
           this.successMessage = result['message'];
-          this.currentBalance = result['result'].from.balance;
+          this.currentBalance = result['result'].balance;
         },
         (err) => {
           console.log(err.error.message);
