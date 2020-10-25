@@ -15,7 +15,7 @@ export class TransferService {
       balance: balance,
     };
     return this.http.post(
-      'http://localhost:3000/api/user/transfer',
+      'http://localhost:8080/api/transfer',
       transferProcess
     );
   }
